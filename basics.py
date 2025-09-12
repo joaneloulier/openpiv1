@@ -3,8 +3,8 @@ import numpy as np
 from skimage.io import imread 
 
 #load images
-a=imread('images_openpiv/B001_1.tif')
-b=imread('images_openpiv/B001_2.tif')
+a=imread('images_openpiv/B005_1.tif')
+b=imread('images_openpiv/B005_2.tif')
 
 #fig,axs=plt.subplots(1,2,figsize=(12,10))
 #axs[0].imshow(a,cmap=plt.cm.gray)
@@ -80,7 +80,8 @@ ax = fig.add_subplot(projection="3d")
 Y, X = np.meshgrid(np.arange(cross_corr.shape[0]), np.arange(cross_corr.shape[1]))
 
 ax.plot_surface(Y, X, cross_corr, cmap='jet', linewidth=0.2)  # type: ignore
-plt.title("B001 : Correlation map — peak is the most probable shift, for one interrogation window")
+plt.title("B005 : Correlation map — peak is the most probable shift, for one interrogation window")
+fig.savefig("C:/Users/JL284743/Documents/github/resultats/openPiv1/basics/correlation_map_B005.png")
 plt.show()
 
 # let's see the same correlation map, from above
@@ -89,8 +90,8 @@ plt.show()
 y, x = np.unravel_index(cross_corr.argmax(), cross_corr.shape)
 print(f"{y=}, {x=}")
 
-plt.plot(x, y, "ro")
-plt.show()
+#plt.plot(x, y, "ro")
+#plt.show()
 
 dy, dx = y - 31, x - 31
 print(f"{dy=}, {dx=}")
@@ -137,5 +138,6 @@ ax.quiver(
     scale=0.25,
 )
 ax.set_aspect("equal")
-plt.title('Champ des vitesses : B001')
+plt.title('Champ des vitesses : B005')
+fig.savefig("C:/Users/JL284743/Documents/github/resultats/openPiv1/basics/velocity_field_B005.png")
 plt.show()
