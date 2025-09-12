@@ -33,9 +33,9 @@ plt.show()'''
 
 #on utilise la fonction roll de numpy pour decalage circulaire
 
-plt.imshow(b_win - np.roll(a_win, (1,0), axis=(0,1)),cmap=plt.cm.gray)
+'''plt.imshow(b_win - np.roll(a_win, (1,0), axis=(0,1)),cmap=plt.cm.gray)
 plt.title('Shift down by 1 pixel')
-plt.show()
+plt.show()'''
 
 #we are going to find the best shift algorithmically
 
@@ -80,11 +80,11 @@ ax = fig.add_subplot(projection="3d")
 Y, X = np.meshgrid(np.arange(cross_corr.shape[0]), np.arange(cross_corr.shape[1]))
 
 ax.plot_surface(Y, X, cross_corr, cmap='jet', linewidth=0.2)  # type: ignore
-plt.title("Correlation map — peak is the most probable shift")
+plt.title("B001 : Correlation map — peak is the most probable shift, for one interrogation window")
 plt.show()
 
 # let's see the same correlation map, from above
-plt.imshow(cross_corr, cmap=plt.cm.gray)
+#plt.imshow(cross_corr, cmap=plt.cm.gray)
 
 y, x = np.unravel_index(cross_corr.argmax(), cross_corr.shape)
 print(f"{y=}, {x=}")
@@ -137,4 +137,5 @@ ax.quiver(
     scale=0.25,
 )
 ax.set_aspect("equal")
+plt.title('Champ des vitesses : B001')
 plt.show()
